@@ -1,0 +1,184 @@
+<!doctype html>
+<html lang="hi">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Bhagwan Valmiki Parivar — Demo</title>
+<style>
+:root{--navy:#12366b;--blue:#2366b1;--gold:#e8c56d;--bg:#f3f6fb;--ink:#17243a;--muted:#66758b;--white:#fff}
+*{box-sizing:border-box}body{margin:0;font-family:system-ui,-apple-system,"Noto Sans Devanagari",sans-serif;background:var(--bg);color:var(--ink)}
+header{background:linear-gradient(120deg,#102c59,#2469ad);color:white;padding:20px max(18px,calc((100% - 1100px)/2));}
+.brand{display:flex;align-items:center;gap:12px}.logo{width:48px;height:48px;border-radius:15px;background:var(--gold);color:#17345f;display:grid;place-items:center;font-size:25px;font-weight:900}
+h1{font-size:20px;margin:0}.tag{font-size:13px;color:#e8efff;margin-top:3px}
+nav{display:flex;gap:8px;overflow:auto;padding:12px max(14px,calc((100% - 1100px)/2));background:white;box-shadow:0 2px 10px #13294b12;position:sticky;top:0;z-index:5}
+nav button{border:0;background:#edf2fa;color:#25456f;border-radius:999px;padding:10px 15px;white-space:nowrap;font-weight:650;cursor:pointer}
+nav button.active{background:var(--navy);color:white}
+main{max-width:1100px;margin:22px auto;padding:0 16px 50px}.hero{background:linear-gradient(120deg,#16396d,#3479bb);color:white;border-radius:22px;padding:28px;display:grid;grid-template-columns:1.5fr 1fr;gap:20px;align-items:center}
+.hero h2{font-size:clamp(25px,4vw,38px);margin:0 0 10px}.hero p{color:#e7efff;line-height:1.6}.hero-art{font-size:90px;text-align:center;filter:drop-shadow(0 8px 8px #061a3b55)}
+.btn{border:0;border-radius:11px;padding:11px 16px;background:var(--gold);color:#17345f;font-weight:750;cursor:pointer}.btn.secondary{background:#eaf1fb;color:#214b7e}.btn.danger{background:#fff0f0;color:#a02b2b}
+.section{display:none}.section.active{display:block}.heading{display:flex;justify-content:space-between;align-items:end;gap:12px;margin:25px 0 14px}.heading h2{margin:0;font-size:23px}.muted{color:var(--muted);font-size:13px}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:15px}.card{background:white;border:1px solid #e4eaf3;border-radius:17px;padding:17px;box-shadow:0 5px 18px #1b36500a}
+.person{display:flex;gap:13px;align-items:center}.avatar{width:62px;height:62px;border-radius:18px;background:linear-gradient(145deg,#d9e8fa,#f4e8c7);display:grid;place-items:center;font-size:30px}
+.person h3{margin:0 0 4px;font-size:17px}.pill{display:inline-block;border-radius:999px;padding:4px 9px;background:#e8f5ed;color:#267345;font-size:11px;font-weight:700}
+.details{font-size:13px;line-height:1.8;color:#526178;margin:12px 0}.actions{display:flex;gap:8px;flex-wrap:wrap}
+input,select,textarea{width:100%;padding:12px;border:1px solid #d6dfeb;border-radius:10px;background:white;font:inherit;color:var(--ink);margin:5px 0 12px}
+label{font-size:13px;font-weight:700;color:#354964}form{max-width:680px}.formgrid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.notice{background:#fff8e7;border:1px solid #f1dfad;color:#6b531b;padding:12px 14px;border-radius:12px;font-size:13px;line-height:1.55;margin:16px 0}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}.stat strong{font-size:26px;color:var(--blue);display:block}
+footer{text-align:center;color:#728097;font-size:12px;padding:24px}
+.toast{position:fixed;bottom:18px;left:50%;transform:translateX(-50%);background:#172f52;color:white;padding:12px 18px;border-radius:12px;display:none;z-index:10;box-shadow:0 5px 25px #0003}
+@media(max-width:760px){.grid{grid-template-columns:1fr 1fr}.hero{grid-template-columns:1fr}.hero-art{display:none}.stats{grid-template-columns:1fr 1fr}}
+@media(max-width:480px){.grid,.formgrid{grid-template-columns:1fr}.heading{align-items:start;flex-direction:column}.hero{padding:22px}}
+</style>
+<style>
+.lang-switch{display:flex;gap:6px;align-items:center;margin-left:auto}
+.lang-switch button{border:1px solid #cbd5e1;background:#fff;color:#17345c;padding:7px 11px;border-radius:999px;font-weight:700;cursor:pointer}
+.lang-switch button.active{background:#173f72;color:#fff;border-color:#173f72}
+@media(max-width:520px){.lang-switch{width:100%;justify-content:flex-end;margin:8px 0}}
+</style>
+
+</head>
+<body>
+<header>
+<div class="lang-switch" aria-label="Language">
+  <button type="button" class="active" data-lang="hi">हिन्दी</button>
+  <button type="button" data-lang="en">English</button>
+</div>
+<div class="brand"><div class="logo">ॐ</div><div><h1>BHAGWAN VALMIKI PARIVAR</h1><div class="tag">अपनों में अपनों का रिश्ता</div></div></div></header>
+<nav>
+<button class="active" data-tab="home">होम</button><button data-tab="search">रिश्ते खोजें</button><button data-tab="register">प्रोफाइल बनाएँ</button><button data-tab="dashboard">मेरा डैशबोर्ड</button><button data-tab="admin">एडमिन डेमो</button>
+</nav>
+<main>
+<section id="home" class="section active">
+<div class="hero"><div><div class="pill" style="background:#e8c56d;color:#17345f">100% मुफ्त • 18+ only</div><h2>रिश्तों की नई शुरुआत</h2><p>भगवान वाल्मीकि समाज के बालिग युवक-युवतियों और परिवारों को विवाह के लिए जोड़ने की एक सामाजिक पहल।</p><button class="btn" onclick="showTab('register')">मुफ्त प्रोफाइल बनाएँ →</button></div><div class="hero-art">🤝💙</div></div>
+<div class="notice"><b>डेमो सूचना:</b> यह केवल नमूना वेबसाइट है। इसमें दिखाए गए सभी प्रोफाइल काल्पनिक हैं। असली व्यक्तिगत जानकारी दर्ज न करें। अभी डेटा सिर्फ इसी ब्राउज़र में अस्थायी रूप से रहता है।</div>
+<div class="heading"><h2>यहाँ क्या कर सकते हैं?</h2><span class="muted">Demo features</span></div>
+<div class="grid"><div class="card"><h3>📝 प्रोफाइल बनाएँ</h3><p class="muted">अपनी बुनियादी जानकारी जोड़ें।</p></div><div class="card"><h3>🔎 रिश्ते खोजें</h3><p class="muted">शहर और शिक्षा के आधार पर खोजें।</p></div><div class="card"><h3>🛡️ सुरक्षित संपर्क</h3><p class="muted">रुचि भेजें; निजी नंबर सार्वजनिक नहीं।</p></div></div>
+</section>
+<section id="search" class="section">
+<div class="heading"><div><h2>रिश्ते खोजें</h2><div class="muted">केवल डेमो प्रोफाइल — वास्तविक सदस्य नहीं</div></div></div>
+<div class="card" style="margin-bottom:15px"><div class="formgrid"><div><label>शहर</label><select id="cityFilter"><option value="">सभी शहर</option><option>पंचकूला</option><option>चंडीगढ़</option><option>अंबाला</option><option>लुधियाना</option><option>यमुनानगर</option></select></div><div><label>शिक्षा</label><select id="eduFilter"><option value="">सभी</option><option>ग्रेजुएशन</option><option>पोस्ट ग्रेजुएशन</option><option>डिप्लोमा</option></select></div></div></div>
+<div id="profiles" class="grid"></div>
+</section>
+<section id="register" class="section">
+<div class="heading"><div><h2>मुफ्त प्रोफाइल बनाएँ</h2><div class="muted">यह डेमो फॉर्म है — असली डेटा न भरें।</div></div></div>
+<div class="notice">असली लॉन्च से पहले पहचान/आयु सत्यापन, स्पष्ट सहमति, डेटा सुरक्षा और ट्रस्ट की अधिकृत मॉडरेशन प्रक्रिया लागू करनी होगी।</div>
+<div class="card"><form id="profileForm">
+<div class="formgrid"><div><label>नाम (डेमो)</label><input required id="name" placeholder="अपना नाम"></div><div><label>जन्मतिथि</label><input required id="dob" type="date"></div><div><label>जेंडर</label><select id="gender" required><option value="">चुनें</option><option>पुरुष</option><option>महिला</option></select></div><div><label>शहर</label><input required id="city" placeholder="जैसे पंचकूला"></div><div><label>शिक्षा</label><select id="education"><option>ग्रेजुएशन</option><option>पोस्ट ग्रेजुएशन</option><option>डिप्लोमा</option><option>अन्य</option></select></div><div><label>व्यवसाय (वैकल्पिक)</label><input id="job" placeholder="व्यवसाय"></div></div>
+<label><input type="checkbox" id="adult" style="width:auto;margin-right:7px" required>मैं पुष्टि करता/करती हूँ कि मेरी उम्र 18 वर्ष या अधिक है।</label><br><label><input type="checkbox" id="consent" style="width:auto;margin-right:7px" required>मैं डेमो की शर्तें और प्राइवेसी सूचना स्वीकार करता/करती हूँ।</label><br><button class="btn" type="submit">डेमो प्रोफाइल जमा करें</button>
+</form></div>
+</section>
+<section id="dashboard" class="section">
+<div class="heading"><div><h2>मेरा डैशबोर्ड</h2><div class="muted">इस ब्राउज़र में बनाई गई डेमो प्रोफाइल</div></div></div>
+<div id="myProfile" class="card"><p class="muted">अभी कोई डेमो प्रोफाइल नहीं बनाई गई।</p></div>
+<div class="heading"><h2>मेरी रुचि अनुरोध</h2></div><div id="interests" class="card"><p class="muted">अभी कोई अनुरोध नहीं।</p></div>
+</section>
+<section id="admin" class="section">
+<div class="heading"><div><h2>एडमिन डैशबोर्ड</h2><div class="muted">सिर्फ इंटरफेस डेमो; कोई वास्तविक एडमिन सुरक्षा नहीं।</div></div></div>
+<div class="stats"><div class="card stat"><span class="muted">डेमो प्रोफाइल</span><strong id="total">3</strong></div><div class="card stat"><span class="muted">पेंडिंग</span><strong id="pending">0</strong></div><div class="card stat"><span class="muted">रुचि अनुरोध</span><strong id="interestCount">0</strong></div></div>
+<div class="heading"><h2>प्रोफाइल मॉडरेशन का नमूना</h2></div><div class="card"><p class="muted">असली सिस्टम में यहाँ अधिकृत ट्रस्ट एडमिन लॉगिन, अप्रूवल, रिजेक्शन, रिपोर्ट समीक्षा और ऑडिट लॉग होंगे। इस डेमो में कोई वास्तविक अप्रूवल नहीं किया जाता।</p><button class="btn secondary" onclick="toast('यह केवल डेमो है — एडमिन लॉगिन अभी जोड़ा नहीं गया।')">एडमिन लॉगिन (डेमो)</button></div>
+</section>
+</main>
+<footer>भगवान वाल्मीकि जी परिवार ट्रस्ट • अपनों में अपनों का रिश्ता<br>यह एक गैर-कार्यशील सुरक्षा/बैकएंड प्रोटोटाइप है।</footer>
+<div id="toast" class="toast"></div>
+<script>
+const sample=[
+{name:"आरव (डेमो)",age:28,gender:"पुरुष",city:"पंचकूला",edu:"ग्रेजुएशन",job:"निजी क्षेत्र",emoji:"👨🏻‍💼"},
+{name:"सिया (डेमो)",age:26,gender:"महिला",city:"चंडीगढ़",edu:"पोस्ट ग्रेजुएशन",job:"शिक्षा क्षेत्र",emoji:"👩🏻‍🎓"},
+{name:"कबीर (डेमो)",age:30,gender:"पुरुष",city:"अंबाला",edu:"डिप्लोमा",job:"स्वरोजगार",emoji:"👨🏽‍💻"}
+];
+let custom=[], interests=[];
+function allProfiles(){return [...sample,...custom]}
+function renderProfiles(){
+ const city=document.getElementById('cityFilter')?.value||'', edu=document.getElementById('eduFilter')?.value||'';
+ const list=allProfiles().filter(p=>(!city||p.city===city)&&(!edu||p.edu===edu));
+ document.getElementById('profiles').innerHTML=list.map((p,i)=>`<article class="card"><div class="person"><div class="avatar">${p.emoji||'👤'}</div><div><h3>${escapeHtml(p.name)}</h3><span class="pill">डेमो प्रोफाइल</span></div></div><div class="details">उम्र: ${p.age} वर्ष<br>शहर: ${escapeHtml(p.city)}<br>शिक्षा: ${escapeHtml(p.edu)}<br>व्यवसाय: ${escapeHtml(p.job||'उल्लेख नहीं')}</div><div class="actions"><button class="btn" onclick="sendInterest('${escapeJs(p.name)}')">रुचि भेजें</button><button class="btn secondary" onclick="toast('डेमो में निजी संपर्क जानकारी साझा नहीं होती।')">विवरण</button></div></article>`).join('')||'<div class="card">कोई डेमो प्रोफाइल नहीं मिली।</div>';
+ document.getElementById('total').textContent=allProfiles().length;
+ document.getElementById('interestCount').textContent=interests.length;
+}
+function escapeHtml(s){return String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
+function escapeJs(s){return String(s).replace(/\\/g,'\\\\').replace(/'/g,"\\'")}
+function toast(s){let t=document.getElementById('toast');t.textContent=s;t.style.display='block';setTimeout(()=>t.style.display='none',2600)}
+function sendInterest(name){interests.push(name);document.getElementById('interests').innerHTML=interests.map(n=>`<div class="details">रुचि भेजी गई: <b>${escapeHtml(n)}</b> <span class="pill">डेमो</span></div>`).join('');renderProfiles();toast('डेमो रुचि अनुरोध जोड़ दिया गया।')}
+function showTab(id){document.querySelectorAll('.section').forEach(s=>s.classList.toggle('active',s.id===id));document.querySelectorAll('nav button').forEach(b=>b.classList.toggle('active',b.dataset.tab===id));if(id==='search')renderProfiles();window.scrollTo({top:0,behavior:'smooth'})}
+document.querySelectorAll('nav button').forEach(b=>b.addEventListener('click',()=>showTab(b.dataset.tab)));
+document.getElementById('cityFilter').addEventListener('change',renderProfiles);document.getElementById('eduFilter').addEventListener('change',renderProfiles);
+document.getElementById('profileForm').addEventListener('submit',e=>{
+ e.preventDefault();let dob=new Date(document.getElementById('dob').value),today=new Date(),age=today.getFullYear()-dob.getFullYear();let m=today.getMonth()-dob.getMonth();if(m<0||(m===0&&today.getDate()<dob.getDate()))age--;
+ if(!Number.isFinite(age)||age<18){toast('डेमो में भी केवल 18+ प्रोफाइल स्वीकार हैं।');return}
+ const p={name:document.getElementById('name').value+' (डेमो)',age,gender:document.getElementById('gender').value,city:document.getElementById('city').value,edu:document.getElementById('education').value,job:document.getElementById('job').value,emoji:'👤'};
+ custom.push(p);document.getElementById('myProfile').innerHTML=`<div class="person"><div class="avatar">👤</div><div><h3>${escapeHtml(p.name)}</h3><span class="pill">स्थानीय डेमो में सेव</span></div></div><div class="details">उम्र: ${age}<br>शहर: ${escapeHtml(p.city)}<br>शिक्षा: ${escapeHtml(p.edu)}</div><p class="muted">यह जानकारी केवल इस पेज की मौजूदा मेमोरी में है; पेज रीफ्रेश करने पर मिट जाएगी।</p>`;
+ document.getElementById('pending').textContent=custom.length;document.getElementById('profileForm').reset();showTab('dashboard');toast('डेमो प्रोफाइल बन गई।');
+});
+renderProfiles();
+</script>
+
+<script>
+(() => {
+  const translations = {
+    "अपनों में अपनों का रिश्ता":"Relationships among our own",
+    "होम":"Home","खोजें":"Search","प्रोफाइल बनाएं":"Create Profile",
+    "डैशबोर्ड":"Dashboard","एडमिन डेमो":"Admin Demo",
+    "जीवनसाथी की तलाश अब आसान":"Finding a life partner, made easier",
+    "भगवान वाल्मीकि परिवार":"Bhagwan Valmiki Parivar",
+    "हरियाणा और पंजाब से शुरुआत":"Starting with Haryana and Punjab",
+    "निःशुल्क सेवा":"Free service",
+    "प्रोफाइल खोजें":"Find Profiles","शहर चुनें":"Choose City",
+    "शिक्षा चुनें":"Choose Education","सभी शहर":"All Cities",
+    "सभी":"All","नाम":"Name","जन्म तिथि":"Date of Birth",
+    "लिंग":"Gender","पुरुष":"Male","महिला":"Female",
+    "शहर":"City","राज्य":"State","शिक्षा":"Education",
+    "पेशा":"Profession","परिवार का परिचय":"Family Introduction",
+    "विवाह संबंधी अपेक्षाएं":"Marriage Preferences",
+    "फोटो (वैकल्पिक)":"Photo (Optional)",
+    "प्रोफाइल सबमिट करें":"Submit Profile",
+    "मैं पुष्टि करता/करती हूँ कि मेरी आयु 18 वर्ष या उससे अधिक है।":"I confirm that I am 18 years old or above.",
+    "मैं नियम और गोपनीयता शर्तें स्वीकार करता/करती हूँ।":"I accept the terms and privacy policy.",
+    "रुचि भेजें":"Send Interest","रुचि प्राप्त":"Interests Received",
+    "मेरी प्रोफाइल":"My Profile","सुरक्षा और गोपनीयता":"Safety & Privacy",
+    "सभी सेवाएं पूरी तरह निःशुल्क हैं।":"All services are completely free.",
+    "यह केवल डेमो है।":"This is only a demo.",
+    "डेमो प्रोफाइल":"Demo Profiles","प्रोफाइल की जानकारी":"Profile Information",
+    "प्रोफाइल स्वीकृत करें":"Approve Profile","अस्वीकार करें":"Reject",
+    "रिपोर्ट करें":"Report","ब्लॉक करें":"Block",
+    "फोन नंबर सार्वजनिक नहीं दिखाया जाएगा।":"Phone numbers will not be shown publicly.",
+    "केवल 18 वर्ष या उससे अधिक आयु के वयस्कों के लिए।":"Only for adults aged 18 and above.",
+    "अगला":"Next","पिछला":"Previous","सेव करें":"Save",
+    "रजिस्ट्रेशन":"Registration","लॉगिन":"Login","लॉग आउट":"Log Out"
+  };
+  const original = new WeakMap();
+  const walk = (node) => {
+    if (node.nodeType === Node.TEXT_NODE) {
+      if (!original.has(node)) original.set(node, node.nodeValue);
+      return;
+    }
+    if (node.nodeType !== Node.ELEMENT_NODE || ["SCRIPT","STYLE"].includes(node.tagName)) return;
+    for (const child of node.childNodes) walk(child);
+  };
+  walk(document.body);
+  const setLanguage = (lang) => {
+    document.documentElement.lang = lang;
+    const walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT);
+    let node;
+    while ((node = walker.nextNode())) {
+      if (!original.has(node)) original.set(node, node.nodeValue);
+      const base = original.get(node);
+      if (lang === "hi") node.nodeValue = base;
+      else {
+        let value = base;
+        for (const [hi,en] of Object.entries(translations)) value = value.split(hi).join(en);
+        node.nodeValue = value;
+      }
+    }
+    document.querySelectorAll("[data-lang]").forEach(btn => btn.classList.toggle("active", btn.dataset.lang === lang));
+    document.querySelectorAll("input,textarea").forEach(el => {
+      if (!el.dataset.hiPlaceholder) el.dataset.hiPlaceholder = el.placeholder || "";
+      el.placeholder = lang === "hi" ? el.dataset.hiPlaceholder : (translations[el.dataset.hiPlaceholder] || el.dataset.hiPlaceholder);
+    });
+    localStorage.setItem("bvparivar-language", lang);
+  };
+  document.querySelectorAll("[data-lang]").forEach(btn => btn.addEventListener("click", () => setLanguage(btn.dataset.lang)));
+  setLanguage(localStorage.getItem("bvparivar-language") || "hi");
+})();
+</script>
+
+</body></html>
